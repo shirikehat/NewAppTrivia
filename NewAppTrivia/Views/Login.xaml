@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+        x:Class="NewAppTrivia.Views.Login"
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:vm="clr-namespace:NewAppTrivia.ViewModels"
+        Title="Login"
+        x:DataType="vm:LoginViewModel">
+
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+        <Label
+                FontSize="50"
+                HorizontalOptions="Center"
+                Text="Login page"
+                TextColor="HotPink" />
+        <Entry
+                Placeholder="הכנס שם"
+                PlaceholderColor="LightGrey"
+                Text="{Binding UserName}" />
+        <Entry
+                IsPassword="True"
+                Placeholder="הכנס סיסמה"
+                PlaceholderColor="LightGrey"
+                Text="{Binding Password}" />
+        <HorizontalStackLayout>
+            <Button
+                    Command="{Binding LoginCommand}"
+                    Text="התחבר"
+                    WidthRequest="150" />
+            <Button
+                    Command="{Binding CancelCommand}"
+                    Text="ביטול"
+                    WidthRequest="150" />
+            <Label Text="{Binding Messege}" TextColor="{Binding Color}" />
+
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+
+</ContentPage>

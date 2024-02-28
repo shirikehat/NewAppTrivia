@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NewAppTrivia.Views.BestScoresPage"
+             Title="BestScoresPage">
+
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Best Scores Page" TextColor="Pink" FontSize="50" />
+            <Button Text="פרטי שחקן" Command="{Binding NavigateToPlayer}" />
+            <Button Command="{Binding LoadMonkeysCommand}" Text="הכנס שחקנים" />
+            <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding LoadPlayersCommand}">
+                <CollectionView SelectionMode="Single" SelectedItem="{Binding SelectedPlayer}" EmptyView="no players" ItemsSource="{Binding Players}">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Player">
+
+                            <Grid ColumnDefinitions="*" RowDefinitions="*">
+                                <Label Grid.Column="1" Text="{Binding Name}" />
+                                <Label Grid.Column="1" Text="{Binding Points}" />
+                            </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
