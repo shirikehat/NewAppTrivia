@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:NewAppTrivia.Models"
+             xmlns:vm="clr-namespace:NewAppTrivia.ViewModels"
              x:Class="NewAppTrivia.Views.BestScoresPage"
-             Title="BestScoresPage">
+             Title="BestScoresPage"
+             x:DataType="vm:BestScoresPageViewModel">
+    
+    
 
     <ScrollView>
         <StackLayout>
-            <Label Text="Best Scores Page" TextColor="Pink" FontSize="50" />
+            <Label Text="Best Scores Page" TextColor="Pink" FontSize="50" FontFamily="SweetHoney"/>
             <Button Text="פרטי שחקן" Command="{Binding NavigateToPlayer}" />
             <Button Command="{Binding LoadMonkeysCommand}" Text="הכנס שחקנים" />
             <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding LoadPlayersCommand}">

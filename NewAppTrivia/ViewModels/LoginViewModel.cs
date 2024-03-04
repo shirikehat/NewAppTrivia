@@ -9,8 +9,9 @@ using NewAppTrivia.Services;
 
 namespace NewAppTrivia.ViewModels
 {
-    internal class LoginViewModel : ViewModel
+    public class LoginViewModel : ViewModel
     {
+        private TriviaServices service;
         private string userName;
         public string UserName
         {
@@ -43,8 +44,9 @@ namespace NewAppTrivia.ViewModels
         public ICommand LoginCommand { get; set; }
         public ICommand CancelCommand { get; set; }
 
-        public LoginViewModel()
+        public LoginViewModel(TriviaServices service)
         {
+            this.service = service;
             CancelCommand=new Command(Cancel,()=>!string.IsNullOrEmpty(UserName)||!string.IsNullOrEmpty(Password));
             LoginCommand = new Command(Login, () =>!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password));
         }

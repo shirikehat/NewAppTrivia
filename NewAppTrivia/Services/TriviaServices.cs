@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using NewAppTrivia.Models;
+using NewAppTrivia.Models;
 
 namespace NewAppTrivia.Services
 {
-    internal class TriviaServices
+    public class TriviaServices
     {
         public List<Player> PlayerList { get; set; }
         public Level level { get; set; }
@@ -35,7 +35,7 @@ namespace NewAppTrivia.Services
         }
 
         //פעולה לדף רשימת שחקנים מהניקוד הגבוה
-        public List<Player> OrderPlayersByScore()
+        public async Task<List<Player>> OrderPlayersByScore()
         {
             return this.PlayerList.OrderByDescending(p => p.Points).ToList();
         }

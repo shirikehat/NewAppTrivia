@@ -2,9 +2,9 @@ using NewAppTrivia.ViewModels;
 
 namespace NewAppTrivia.Views;
 
-public partial class BestScoresPage : ContentPage
+public partial class ApproveQuestionsPage : ContentPage
 {
-	public BestScoresPage(BestScoresPageViewModel vm)
+	public ApproveQuestionsPage(ApproveQuestionsPageViewModel vm)
 	{
 		InitializeComponent();
         this.BindingContext = vm;

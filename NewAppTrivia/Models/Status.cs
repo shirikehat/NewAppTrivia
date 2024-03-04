@@ -4,8 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace NewAppTrivia;
-
+namespace NewAppTrivia.Models;
 [Table("Status")]
 public partial class Status
 {

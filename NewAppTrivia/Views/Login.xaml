@@ -3,6 +3,7 @@
         x:Class="NewAppTrivia.Views.Login"
         xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:NewAppTrivia.Models"
         xmlns:vm="clr-namespace:NewAppTrivia.ViewModels"
         Title="Login"
         x:DataType="vm:LoginViewModel">
