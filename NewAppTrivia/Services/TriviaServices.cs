@@ -39,5 +39,11 @@ namespace NewAppTrivia.Services
         {
             return this.PlayerList.OrderByDescending(p => p.Points).ToList();
         }
+
+        public async Task<List<Player>> OrderPlayersByScoreFromLow()
+        {
+            return this.PlayerList.OrderBy(p => p.Points).ToList();
+        }
+
     }
 }

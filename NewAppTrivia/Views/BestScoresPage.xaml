@@ -12,9 +12,12 @@
     <ScrollView>
         <StackLayout>
             <Label Text="Best Scores Page" TextColor="Pink" FontSize="50" FontFamily="SweetHoney"/>
-            <Button Text="פרטי שחקן" Command="{Binding NavigateToPlayer}" />
-            <Button Command="{Binding LoadMonkeysCommand}" Text="הכנס שחקנים" />
-            <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding LoadPlayersCommand}">
+            
+            <Button Command="{Binding LoadPlayersCommand}" Text="הכנס שחקנים" />
+            <Button Command="{Binding FilterCommand}" Text="סנן" />
+            <Button Command="{Binding ClearFilterCommand}" Text="נקה סינון" />
+
+            <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
                 <CollectionView SelectionMode="Single" SelectedItem="{Binding SelectedPlayer}" EmptyView="no players" ItemsSource="{Binding Players}">
 
                     <CollectionView.ItemTemplate>
@@ -28,6 +31,8 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+
+                
             </RefreshView>
         </StackLayout>
     </ScrollView>

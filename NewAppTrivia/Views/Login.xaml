@@ -13,7 +13,8 @@
                 FontSize="50"
                 HorizontalOptions="Center"
                 Text="Login page"
-                TextColor="HotPink" />
+                TextColor="LightBlue"
+            FontFamily="SweetHoney"/>
         <Entry
                 Placeholder="הכנס שם"
                 PlaceholderColor="LightGrey"
