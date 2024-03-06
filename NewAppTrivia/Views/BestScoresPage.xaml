@@ -1,39 +1,100 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:models="clr-namespace:NewAppTrivia.Models"
-             xmlns:vm="clr-namespace:NewAppTrivia.ViewModels"
-             x:Class="NewAppTrivia.Views.BestScoresPage"
-             Title="BestScoresPage"
-             x:DataType="vm:BestScoresPageViewModel">
-    
-    
+<ContentPage
+    x:Class="NewAppTrivia.Views.BestScoresPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:NewAppTrivia.Models"
+    xmlns:vm="clr-namespace:NewAppTrivia.ViewModels"
+    Title="BestScoresPage"
+    x:DataType="vm:BestScoresPageViewModel">
+
+
 
     <ScrollView>
         <StackLayout>
-            <Label Text="Best Scores Page" TextColor="Pink" FontSize="50" FontFamily="SweetHoney"/>
-            
+            <Label
+                FontFamily="SweetHoney"
+                FontSize="50"
+                HorizontalOptions="Center"
+                Text="Best Scores Page"
+                TextColor="CornflowerBlue" />
+
             <Button Command="{Binding LoadPlayersCommand}" Text="הכנס שחקנים" />
             <Button Command="{Binding FilterCommand}" Text="סנן" />
             <Button Command="{Binding ClearFilterCommand}" Text="נקה סינון" />
+            <Picker
+                Title="סינון לפי רמות"
+                ItemDisplayBinding="{Binding Name}"
+                ItemsSource="{Binding Levels}"
+                SelectedIndex="{Binding SelectedIndex}"
+                SelectedItem="{Binding SelectedLevel}" />
 
             <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
-                <CollectionView SelectionMode="Single" SelectedItem="{Binding SelectedPlayer}" EmptyView="no players" ItemsSource="{Binding Players}">
+                <CollectionView
+                    EmptyView="no players"
+                    ItemsSource="{Binding Players}"
+                    SelectedItem="{Binding SelectedPlayer}"
+                    SelectionMode="Single">
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Player">
 
-                            <Grid ColumnDefinitions="*" RowDefinitions="*">
-                                <Label Grid.Column="1" Text="{Binding Name}" />
-                                <Label Grid.Column="1" Text="{Binding Points}" />
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="*">
+                                <Label
+                                    Grid.Column="0"
+                                    FontSize="20"
+                                    Text="{Binding Name}" />
+                                <Label
+                                    Grid.Column="1"
+                                    FontSize="20"
+                                    Text="{Binding Points}" />
                             </Grid>
 
                         </DataTemplate>
+
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
-                
             </RefreshView>
+
+            <Border
+                Grid.Row="4"
+                Grid.ColumnSpan="2"
+                Margin="5"
+                BackgroundColor="BlanchedAlmond">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="{Binding SelectedPlayer.PlayerId}"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="{Binding SelectedPlayer.LevelCode}"
+                        VerticalOptions="Center" />
+
+
+                </Grid>
+
+            </Border>
+
         </StackLayout>
     </ScrollView>
 </ContentPage>
