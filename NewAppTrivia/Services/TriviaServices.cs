@@ -12,7 +12,7 @@ namespace NewAppTrivia.Services
     {
         public List<Player> PlayerList { get; set; }
         public List<Level> levels { get; set; }
-        public List<Question> QuestionList { get; set; }
+        public List<Question> questions { get; set; }
         public Status status { get; set; }
         public Subject subject { get; set; }
 
@@ -20,6 +20,20 @@ namespace NewAppTrivia.Services
         {
             FillPlayers();
             fillLevels();
+            FillQuestions();
+        }
+
+        private void FillQuestions()
+        {
+            questions = new List<Question>();
+            questions.Add(new Question() { StatusCode = 3 , Text= "How many km are in a marathon?" , SubjectCode=1});
+            questions.Add(new Question() { StatusCode = 2, Text = "What is the name og the principle in Ramon High School?" , SubjectCode=5});
+            questions.Add(new Question() { StatusCode = 3, Text = "What is the atomic number of oxygen?", SubjectCode=4 });
+        }
+
+        public List<Question> PendingQuestion()//פעולה המחזירה רשימה של שאלות שהסטטוס שלהן הוא 3
+        {
+            return this.questions.Where(x => x.StatusCode == 3).ToList();
         }
 
         private void fillLevels()

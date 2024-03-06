@@ -8,7 +8,52 @@ xmlns:vm="clr-namespace:NewAppTrivia.ViewModels"
              x:DataType="vm:ApproveQuestionsPageViewModel">
     <ScrollView>
         <StackLayout>
+            <Label
+            FontFamily="SweetHoney"
+            FontSize="50"
+            HorizontalOptions="Center"
+            Text="Approve Questions Page"
+            TextColor="CornflowerBlue" />
+
+            <Button Command="{Binding LoadPlayersCommand}" Text="הכנס שחקנים" />
+            <Button Command="{Binding FilterCommand}" Text="סנן" />
+            <Button Command="{Binding ClearFilterCommand}" Text="נקה סינון" />
+            <Picker
+            Title="סינון לפי רמות"
+            ItemDisplayBinding="{Binding Name}"
+            ItemsSource="{Binding Levels}"
+            SelectedIndex="{Binding SelectedIndex}"
+            SelectedItem="{Binding SelectedLevel}" />
+
+            <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView
+                EmptyView="no players"
+                ItemsSource="{Binding Players}"
+                SelectedItem="{Binding SelectedPlayer}"
+                SelectionMode="Single">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Player">
+
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="*">
+                                <Label
+                                Grid.Column="0"
+                                FontSize="20"
+                                Text="{Binding Name}" />
+                                <Label
+                                Grid.Column="1"
+                                FontSize="20"
+                                Text="{Binding Points}" />
+                            </Grid>
+
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+
             
+
         </StackLayout>
     </ScrollView>
 </ContentPage>
