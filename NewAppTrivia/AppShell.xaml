@@ -8,7 +8,7 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:BestScoresPage}"
+        ContentTemplate="{DataTemplate local:ApproveQuestionsPage}"
         Route="MainPage" />
 
 </Shell>

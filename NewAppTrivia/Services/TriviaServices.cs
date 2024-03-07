@@ -14,13 +14,14 @@ namespace NewAppTrivia.Services
         public List<Level> levels { get; set; }
         public List<Question> questions { get; set; }
         public Status status { get; set; }
-        public Subject subject { get; set; }
+        public List<Subject> subjects { get; set; }
 
         public TriviaServices() 
         {
             FillPlayers();
             fillLevels();
             FillQuestions();
+            FillSubects();
         }
 
         private void FillQuestions()
@@ -30,8 +31,18 @@ namespace NewAppTrivia.Services
             questions.Add(new Question() { StatusCode = 2, Text = "What is the name og the principle in Ramon High School?" , SubjectCode=5});
             questions.Add(new Question() { StatusCode = 3, Text = "What is the atomic number of oxygen?", SubjectCode=4 });
         }
+        private void FillSubects()
+        {
+            subjects= new List<Subject>();
+            subjects.Add(new Subject() { SubjectCode = 1, Name= "sport" });
+            subjects.Add(new Subject() { SubjectCode = 2 , Name= "politics" });
+            subjects.Add(new Subject() { SubjectCode = 3 , Name="history"});
+            subjects.Add(new Subject() { SubjectCode = 4 , Name= "science" });
+            subjects.Add(new Subject() { SubjectCode = 5, Name= "ramonHighSchool" });
 
-        public List<Question> PendingQuestion()//פעולה המחזירה רשימה של שאלות שהסטטוס שלהן הוא 3
+        }
+
+        public async Task< List<Question>> PendingQuestion()//פעולה המחזירה רשימה של שאלות שהסטטוס שלהן הוא 3
         {
             return this.questions.Where(x => x.StatusCode == 3).ToList();
         }
@@ -77,8 +88,11 @@ namespace NewAppTrivia.Services
             return levels;
         }
 
+        public async Task<List<Subject>> GetSubjects()
+        {
+            return subjects;
+        }
 
-        
 
     }
 }
