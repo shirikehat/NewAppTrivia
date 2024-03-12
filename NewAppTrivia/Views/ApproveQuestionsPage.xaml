@@ -28,15 +28,17 @@
                 SelectedItem="{Binding BindingContext.SelectedSubject, Source={x:Reference scrlview}}" />
 
             <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
-                <CollectionView EmptyView="no questions" ItemsSource="{Binding Questions}">
+                <CollectionView x:Name="colview" EmptyView="no questions" ItemsSource="{Binding Questions}">
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Question">
                             <SwipeView>
                                 <SwipeView.LeftItems>
                                     <SwipeItems>
-                                        <SwipeItem Text="approve" />
-                                        <SwipeItem Text="decline" />
+                                        <SwipeItem Text="approve" Command="{Binding Source={x:Reference colview}, Path=BindingContext.ApproveCommand}"
+                                                   CommandParameter="{Binding .}"/>
+                                        <SwipeItem Text="decline" Command="{Binding Source={x:Reference colview}, Path=BindingContext.DeclineCommand}"
+                                                   CommandParameter="{Binding .}"/>
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
                                 <Grid ColumnDefinitions="*,*" RowDefinitions="*">

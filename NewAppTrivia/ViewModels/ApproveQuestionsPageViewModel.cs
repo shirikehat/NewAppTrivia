@@ -19,7 +19,7 @@ namespace NewAppTrivia.ViewModels
         public ObservableCollection<Question> Questions { get; set; }//אוסף שחקנים
         public ObservableCollection<Subject> Subjects { get; set; }//אוסף שחקנים
         public ICommand LoadQuestionsCommand { get; private set; }//טעינה
-        public ICommand ApproveComand {  get; private set; }
+        public ICommand ApproveCommand {  get; private set; }
         public ICommand DeclineCommand { get; private set; }
       
 
@@ -58,7 +58,7 @@ namespace NewAppTrivia.ViewModels
 
             RefreshCommand = new Command(async () => await Refresh());
             DeleteCommand = new Command(() => Delete());
-            ApproveComand = new Command<Question>((q) => ChangeStatusToApprove(q));
+            ApproveCommand = new Command<Question>((q) => ChangeStatusToApprove(q));
             DeclineCommand = new Command<Question>((q) => ChangeStatusToDecline(q));
 
             fullList = new List<Question>();//רשימה ריקה
