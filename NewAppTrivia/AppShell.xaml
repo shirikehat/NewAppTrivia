@@ -6,6 +6,25 @@
     xmlns:local="clr-namespace:NewAppTrivia.Views"
     Shell.FlyoutBehavior="Disabled">
 
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="prettyPink">#f8b3cc</Color>
+
+            <Style x:Key="MyStyle" TargetType="StackLayout">
+                <Setter Property="Padding" Value="30,0" />
+                <Setter Property="Spacing" Value="10" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource prettyPink}" />
+                <Setter Property="WidthRequest" Value="120" />
+                <Setter Property="CornerRadius" Value="60" />
+            </Style>
+
+
+        </ResourceDictionary>
+    </Shell.Resources>
+
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:ApproveQuestionsPage}"

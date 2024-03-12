@@ -9,16 +9,7 @@
     x:DataType="vm:BestScoresPageViewModel">
 
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="ugly"> #6b3e64</Color>
-
-            <Style x:Key="MyStyle" TargetType="VerticalStackLayout">
-                <Setter Property="Padding" Value="30,0"/>
-            </Style>
-            
-        </ResourceDictionary>
-    </ContentPage.Resources>
+    
 
     <ScrollView>
         <StackLayout>
