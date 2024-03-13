@@ -28,15 +28,20 @@
 
     <FlyoutItem Title="Home" FlyoutDisplayOptions="AsMultipleItems" Icon="home.png">
         <ShellContent
-             ContentTemplate="{DataTemplate views:Login}"
-               Icon="home.png"
-               Route="Homepage" />
-        <ShellContent
-         Title="אישור"
-          ContentTemplate="{DataTemplate views:ApproveQuestionsPage}"
-             Icon="search.png" />
+     Title="Home"
+     ContentTemplate="{DataTemplate local:Login}"
+     FlyoutItemIsVisible="False"
+     Route="MainPage" />
 
-        <ShellContent Title="שחקנים" ContentTemplate="{DataTemplate views:BestScoresPage}" />
+        <ShellContent
+     Title="Approve Questions"
+     ContentTemplate="{DataTemplate local:ApproveQuestionsPage}"
+     Route="ApproveQuestionsPage" />
+        <ShellContent
+     Title="Best Scores"
+     ContentTemplate="{DataTemplate local:BestScoresPage}"
+     Route="BestScoresPage" />
+
 
     </FlyoutItem>
     <!--<ShellContent
