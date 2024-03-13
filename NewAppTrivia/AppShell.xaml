@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:NewAppTrivia.Views"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Flyout">
 
 
     <Shell.Resources>
@@ -25,9 +25,23 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <ShellContent
+
+    <FlyoutItem Title="Home" FlyoutDisplayOptions="AsMultipleItems" Icon="home.png">
+        <ShellContent
+             ContentTemplate="{DataTemplate views:Login}"
+               Icon="home.png"
+               Route="Homepage" />
+        <ShellContent
+         Title="אישור"
+          ContentTemplate="{DataTemplate views:ApproveQuestionsPage}"
+             Icon="search.png" />
+
+        <ShellContent Title="שחקנים" ContentTemplate="{DataTemplate views:BestScoresPage}" />
+
+    </FlyoutItem>
+    <!--<ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:ApproveQuestionsPage}"
-        Route="MainPage" />
+        Route="MainPage" />-->
 
 </Shell>

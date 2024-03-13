@@ -48,13 +48,18 @@ namespace NewAppTrivia.ViewModels
         {
             this.service = service;
             CancelCommand=new Command(Cancel,()=>!string.IsNullOrEmpty(UserName)||!string.IsNullOrEmpty(Password));
-            LoginCommand = new Command(Login, () =>!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password));
+            LoginCommand = new Command(async () => await Login(), () => !String.IsNullOrEmpty(UserName) && !String.IsNullOrEmpty(Password));
+
+
         }
 
         public void Cancel()
         {
             UserName=string.Empty;
             Password=string.Empty;
+            Messege = string.Empty;
+            
+            
 
         }
 
@@ -63,21 +68,31 @@ namespace NewAppTrivia.ViewModels
             ((Command)CancelCommand).ChangeCanExecute();
             ((Command)LoginCommand).ChangeCanExecute();
         }
-        private void Login()
+
+
+        public async Task Login()
         {
-            TriviaServices tr= new TriviaServices();
-            bool result = tr.Login(UserName, Password);
-            if (result)
+
+            bool isExist = service.Login(userName, password);
+            if (isExist == true)
             {
-                Messege = "Success login";
+                Messege = "התחבר בהצלחה";
                 Color = Colors.Green;
+                AppShell.Current.FlyoutBehavior = FlyoutBehavior.Flyout;
+                await AppShell.Current.GoToAsync("BestScoresPage");
+
             }
+
             else
             {
-                Messege = "failed login";
+                Messege = "לא קיים משתמש";
                 Color = Colors.Red;
+
             }
         }
+
+
+        
 
 
     }
