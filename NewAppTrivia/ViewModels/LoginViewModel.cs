@@ -79,7 +79,7 @@ namespace NewAppTrivia.ViewModels
                 Messege = "התחבר בהצלחה";
                 Color = Colors.Green;
                 AppShell.Current.FlyoutBehavior = FlyoutBehavior.Flyout;
-                await AppShell.Current.GoToAsync("BestScoresPage");
+                await AppShell.Current.GoToAsync("///BestScoresPage");
 
             }
 
