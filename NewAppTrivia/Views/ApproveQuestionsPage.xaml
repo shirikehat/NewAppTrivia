@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-        x:Class="NewAppTrivia.Views.ApproveQuestionsPage"
-        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-        xmlns:models="clr-namespace:NewAppTrivia.Models"
-        xmlns:vm="clr-namespace:NewAppTrivia.ViewModels"
-        Title="ApproveQuestionsPage"
-        x:DataType="vm:ApproveQuestionsPageViewModel">
+    x:Class="NewAppTrivia.Views.ApproveQuestionsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:NewAppTrivia.Models"
+    xmlns:vm="clr-namespace:NewAppTrivia.ViewModels"
+    Title="ApproveQuestionsPage"
+    x:DataType="vm:ApproveQuestionsPageViewModel">
 
 
-    
+
 
 
 
     <ScrollView x:Name="scrlview">
         <StackLayout Style="{StaticResource MyStyle}">
             <Label
-                    FontFamily="SweetHoney"
-                    FontSize="50"
-                    HorizontalOptions="Center"
-                    Text="Approve Questions Page"
-                    TextColor="CornflowerBlue" />
+                FontFamily="SweetHoney"
+                FontSize="50"
+                HorizontalOptions="Center"
+                Text="Approve Questions Page"
+                TextColor="CornflowerBlue" />
 
             <Button Command="{Binding LoadQuestionsCommand}" Text="הכנס שאלות" />
             <Button Command="{Binding FilterCommand}" Text="סנן לפי קטגוריה" />
             <Button Command="{Binding ClearFilterCommand}" Text="נקה סינון" />
             <Picker
-                    Title="סינון לפי קטגוריה"
-                    x:DataType="models:Subject"
-                    ItemDisplayBinding="{Binding Name}"
-                    ItemsSource="{Binding BindingContext.Subjects, Source={x:Reference scrlview}}"
-                    SelectedIndex="{Binding BindingContext.SelectedIndex, Source={x:Reference scrlview}}"
-                    SelectedItem="{Binding BindingContext.SelectedSubject, Source={x:Reference scrlview}}" />
+                Title="סינון לפי קטגוריה"
+                x:DataType="models:Subject"
+                ItemDisplayBinding="{Binding Name}"
+                ItemsSource="{Binding BindingContext.Subjects, Source={x:Reference scrlview}}"
+                SelectedIndex="{Binding BindingContext.SelectedIndex, Source={x:Reference scrlview}}"
+                SelectedItem="{Binding BindingContext.SelectedSubject, Source={x:Reference scrlview}}" />
 
             <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
                 <CollectionView
-                        x:Name="colview"
-                        EmptyView="no questions"
-                        ItemsSource="{Binding Questions}">
+                    x:Name="colview"
+                    EmptyView="no questions"
+                    ItemsSource="{Binding Questions}">
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Question">
@@ -45,24 +45,26 @@
                                 <SwipeView.LeftItems>
                                     <SwipeItems>
                                         <SwipeItem
-                                                Command="{Binding Source={x:Reference colview}, Path=BindingContext.ApproveCommand}"
-                                                CommandParameter="{Binding .}"
-                                                Text="approve" />
+                                            Command="{Binding Source={x:Reference colview}, Path=BindingContext.ApproveCommand}"
+                                            CommandParameter="{Binding .}"
+                                            Text="approve" />
                                         <SwipeItem
-                                                Command="{Binding Source={x:Reference colview}, Path=BindingContext.DeclineCommand}"
-                                                CommandParameter="{Binding .}"
-                                                Text="decline" />
+                                            Command="{Binding Source={x:Reference colview}, Path=BindingContext.DeclineCommand}"
+                                            CommandParameter="{Binding .}"
+                                            Text="decline" />
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
                                 <Grid ColumnDefinitions="*,*" RowDefinitions="*">
                                     <Label
-                                            Grid.Column="0"
-                                            FontSize="20"
-                                            Text="{Binding Text}" />
+                                        Grid.Column="0"
+                                        FontSize="20"
+                                        Text="{Binding Text}"
+                                        HorizontalOptions="End"/>
                                     <Label
-                                            Grid.Column="1"
-                                            FontSize="20"
-                                            Text="{Binding SubjectCodeNavigation}" />
+                                        Grid.Column="1"
+                                        FontSize="20"
+                                        Text="{Binding SubjectCodeNavigation.Name}"
+                                        HorizontalOptions="End"/>
                                 </Grid>
 
                             </SwipeView>

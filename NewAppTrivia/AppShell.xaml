@@ -25,22 +25,26 @@
         </ResourceDictionary>
     </Shell.Resources>
 
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate local:Login}"
+        FlyoutItemIsVisible="False"
+        Route="MainPage"
+        Shell.FlyoutBehavior="Disabled" />
 
-    <FlyoutItem Title="Home" FlyoutDisplayOptions="AsMultipleItems" Icon="home.png">
-        <ShellContent
-     Title="Home"
-     ContentTemplate="{DataTemplate local:Login}"
-     FlyoutItemIsVisible="False"
-     Route="MainPage" />
+    <FlyoutItem
+        Title="Home"
+        FlyoutDisplayOptions="AsMultipleItems"
+        Icon="home.png">
 
         <ShellContent
-     Title="Approve Questions"
-     ContentTemplate="{DataTemplate local:ApproveQuestionsPage}"
-     Route="ApproveQuestionsPage" />
+            Title="Approve Questions"
+            ContentTemplate="{DataTemplate local:ApproveQuestionsPage}"
+            Route="ApproveQuestionsPage" />
         <ShellContent
-     Title="Best Scores"
-     ContentTemplate="{DataTemplate local:BestScoresPage}"
-     Route="BestScoresPage" />
+            Title="Best Scores"
+            ContentTemplate="{DataTemplate local:BestScoresPage}"
+            Route="BestScoresPage" />
 
 
     </FlyoutItem>

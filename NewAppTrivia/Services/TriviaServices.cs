@@ -20,16 +20,17 @@ namespace NewAppTrivia.Services
         {
             FillPlayers();
             fillLevels();
-            FillQuestions();
             FillSubects();
+            FillQuestions();
         }
 
         private void FillQuestions()
         {
+
             questions = new List<Question>();
-            questions.Add(new Question() { StatusCode = 3 , Text= "How many km are in a marathon?" , SubjectCode=1});
-            questions.Add(new Question() { StatusCode = 2, Text = "What is the name og the principle in Ramon High School?" , SubjectCode=5});
-            questions.Add(new Question() { StatusCode = 3, Text = "What is the atomic number of oxygen?", SubjectCode=4 });
+            questions.Add(new Question() { StatusCode = 3 , Text= "How many km are in a marathon?" , SubjectCode=1, SubjectCodeNavigation=subjects.Single(sub=>sub.SubjectCode==1)});
+            questions.Add(new Question() { StatusCode = 2, Text = "What is the name og the principle in Ramon High School?" , SubjectCode=5, SubjectCodeNavigation = subjects.Single(sub => sub.SubjectCode == 5)});
+            questions.Add(new Question() { StatusCode = 3, Text = "What is the atomic number of oxygen?", SubjectCode=4 , SubjectCodeNavigation = subjects.Single(sub => sub.SubjectCode == 4) });
         }
         private void FillSubects()
         {

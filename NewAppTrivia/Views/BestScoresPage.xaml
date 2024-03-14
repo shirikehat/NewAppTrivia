@@ -71,20 +71,23 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-
+                    <Label Text="Id" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"/>
                     <Label
                         Grid.Row="0"
-                        Grid.Column="0"
+                        Grid.Column="1"
                         FontAttributes="Bold"
                         FontSize="20"
                         HorizontalOptions="Center"
                         Text="{Binding SelectedPlayer.PlayerId}"
                         VerticalOptions="Center" />
+                    <Label Text="Level" Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
                     <Label
                         Grid.Row="1"
-                        Grid.Column="0"
+                        Grid.Column="1"
                         FontAttributes="Bold"
                         FontSize="20"
                         HorizontalOptions="Center"
